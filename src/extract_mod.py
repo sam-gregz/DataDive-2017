@@ -2,7 +2,7 @@
 
 import csv
 
-def extract(input_file, output_file="")
+def extract(input_file, output_file=""):
     with open(input_file) as f:
         reader = csv.reader(f)
         header_row = next(reader)
@@ -44,17 +44,12 @@ def extract(input_file, output_file="")
         else:
             result = []
             
-            # We put all the selected headers in a list
-            sel_headers = []
-            for i in selected_columns:
-                sel_headers.append(header_row[i])
-            
-            # And build a dictionary for each row that weput into a bigger dictionary
+            # We build a dictionary for each row that we put into a list
             row_dict = {}
             for row in reader:
                 for i in selected_columns:
-                    row_dict.append(sel_headers[i]:row[i])
-                result.append(row_dict)
+                    row_dict[header_row[i]] = row[i]
+                result.append(row_dict.copy())
                 row_dict.clear()
 
             return result
