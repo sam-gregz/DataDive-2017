@@ -3,6 +3,10 @@
 import csv
 import sys
 
+if len(sys.argv) < 2:
+    print("Usage: extract.py /path/to/input_file.csv [/path/to/output_file.csv]")
+    print("       If no output file is specified, the output is sent to stdout")
+
 # Put in the path to the file you want in the arguments
 filepath = sys.argv[1]
 
