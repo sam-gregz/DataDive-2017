@@ -4,6 +4,7 @@ import random
 import csv
 
 def extract(input_file, output_file="", selected_columns = []):
+    """Function that extracts wanted data from a csv file. Can output to another csv file or return a list of the selected data"""
     with open(input_file) as f:
         reader = csv.reader(f)
         header_row = next(reader)
@@ -58,6 +59,7 @@ def extract(input_file, output_file="", selected_columns = []):
 
 # Splits a list of data into two lists in a ratio of (fraction):(1-fraction) randomly
 def data_split(data, fraction):
+    """Splits a list of data into two lists (returned within a single list) in a ratio of (fraction):(1-fraction) and popoulates each list randomly"""
     # Since shuffle affects the list and we want to keep the original list intact, we copy the list
     shf_data = data.copy()
     shuffle(shf_data)
