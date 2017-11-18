@@ -32,7 +32,7 @@ with open(filepath) as f:
             selection = input("Enter the index of a column you wish to extract, enter anything that is not a number when done: ")
 
     # If an output file is provided, we write the selected columns to it (only supports csv)
-    if sys.argv[2]:
+    if len(sys.argv) > 2:
         with open(sys.argv[2], 'w') as outfile:
             writer = csv.writer(outfile)
             
