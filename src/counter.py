@@ -1,16 +1,17 @@
 #!/bin/python
 from extract_mod import extract
 
-path = "/home/sam/Documents/DataDive/Transportation/NYC General Transport/NYC-vehicle-collisions.csv"
-rows = extract(path, selected_columns=[3])
+def count_instances(file_name, column):
+    """Counts the instances of the different keys in one column of a data set"""
+    rows = extract(file_name, selected_columns=column)
 
-counter = {}
+    counter = {}
 
-for row in rows:
-    if row["BOROUGH"] in counter:
-        counter[row["BOROUGH"]] = counter[row["BOROUGH"]] + 1
-    else:
-        counter[row["BOROUGH"]] = 0
+    for row in rows:
+        if next(iter(row.values())) in counter:
+            counter[next(iter(row.values()))] = counter[next(iter(row.values()))] + 1
+        else:
+            counter[next(iter(row.values()))] = 1
 
-for borough in counter:
-    print(borough + ": " + str(counter[borough]))
+    for k in counter:
+        print(k + ": " + str(counter[k]))
